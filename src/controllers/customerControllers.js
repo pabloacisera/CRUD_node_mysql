@@ -6,12 +6,17 @@ controller.list = (req, res) => {
             if (err) {
                 res.json(err);
             }
-            console.log(customers); // Aquí deberías imprimir el resultado de la consulta
+            //console.log(customers); // Aquí deberías imprimir el resultado de la consulta
             res.render('customers', {
-                 // Pasa los resultados de la consulta a la vista
+                data:customers // Pasa los resultados de la consulta a la vista.ver costumrs.ejs
             });
         });
     });
 };
+
+controller.save=(req, res)=>{
+    console.log(req.body);
+    res.send('data saving...')
+}
 
 module.exports = controller;

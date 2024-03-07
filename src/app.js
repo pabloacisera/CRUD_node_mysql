@@ -19,6 +19,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 /**middlewares: son funciones que se ejecutan antes de que vengan las peticiones o rutas del servidor, por ejemplo "/" */
 app.use(morgan('dev'));
+app.use(express.urlencoded({extended: false}));
 
 /**conectar a mysql */
 app.use(myConnection(mysql, {
@@ -30,5 +31,6 @@ app.use(myConnection(mysql, {
     insecureAuth: true
 }, 'single'));
 
+/**routes */
 app.use('/', customerRoutes);
 app.use(express.static(path.join(__dirname, 'public')));
