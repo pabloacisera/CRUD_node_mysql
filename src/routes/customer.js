@@ -9,6 +9,8 @@ const controller=require('../controllers/customerControllers')
 /**luego en customerController.js definimos que haria la ruta "/" y luego exportamos el modulo, es decir en vez de escribir la funcion dentro de routes, la escribmos en un modulo y lo exportamos. */
 router.get('/', controller.list);
 router.post('/add', controller.save);
+router.get('/delete/:id', controller.delete);
+router.get('/update', controller.update);
 
 
 

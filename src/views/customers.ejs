@@ -3,7 +3,36 @@
 <div class="container">
     <div class="row mt-5">
         <div class="col-md-8">
-
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Nº</th>
+                        <th>Nombre</th>
+                        <th>Direccion</th>
+                        <th>Telefono</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let i = 0; i < data.length; i++) { %>
+                        <tr>
+                            <td><%= i + 1 %></td>
+                            <td><%= data[i].name %></td>
+                            <td><%= data[i].address %></td>
+                            <td><%= data[i].phone %></td>
+                            <td>
+                                <a class="btn btn-info text-center" href="/update">Actualizar</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-danger text-center" href="/delete/<%= data[i].id %>">Borrar</a>
+                            </td>
+                            
+                            <!-- Agrega aquí las columnas restantes según sea necesario -->
+                        </tr>
+                    <% } %>
+                    
+                </tbody>
+            </table>
         </div>
         <div class="col-md-4">
             <div class="card ">
@@ -18,7 +47,7 @@
                         <div class="form-group">
                             <input type="number" name="phone" placeholder="telefono" class= "form-control">
                         </div>
-                        <button type="submit btn btn-primary" class="mt-2">guardar paciente</button>
+                        <button type="submit" class="mt-2  btn btn-success">guardar paciente</button>
                     </form>
                 </div>
             </div>
