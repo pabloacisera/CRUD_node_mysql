@@ -10,7 +10,10 @@ const controller=require('../controllers/customerControllers')
 router.get('/', controller.list);
 router.post('/add', controller.save);
 router.get('/delete/:id', controller.delete);
-router.get('/update', controller.update);
+
+
+router.get('/update/:id', controller.update);
+router.post('/update/:id', controller.updatePost);
 
 
 

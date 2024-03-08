@@ -28,7 +28,47 @@ controller.save=(req, res)=>{
 
 /**FUNCION ACTUALIZAR FICHA */
 controller.update=(req, res)=>{
-    
+    const { id } = req.params;
+
+    req.getConnection((err, conn) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).send('Internal Server Error');
+        }
+
+        conn.query('SELECT * FROM customer WHERE id = ?', [id], (err, customers) => {
+            if (err) {
+                console.log(err);
+                return res.status(500).send('Error deleting record');
+            }
+
+            res.render('customers_edit.ejs', {
+                data:customers[0],
+            });
+        });
+    });
+}
+
+controller.updatePost = (req, res) => {
+    const { id } = req.params;
+    const { name, address, phone } = req.body;
+
+    req.getConnection((err, conn) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).send('Internal Server Error');
+        }
+
+        conn.query('UPDATE customer SET name = ?, address = ?, phone = ? WHERE id = ?', [name, address, phone, id], (err, result) => {
+            if (err) {
+                console.log(err);
+                return res.status(500).send('Error updating customer');
+            }
+
+            // Redireccionar a la página principal después de la actualización
+            res.redirect('/');
+        });
+    });
 }
 
 /**FUNCION BORRAR FICHA */

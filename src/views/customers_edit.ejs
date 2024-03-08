@@ -1,0 +1,24 @@
+<%- include('../views/partials/header') -%>
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/update/<%= data.id %>" method="post"  class="justify-content-center text-center alig-items-center">
+                        <div class="form-group">
+                            <input type="text" name="name" value="<%= data.name %>" class="form-control">
+                        </div>
+                        <div class="form-group">   
+                            <input type="text" name="address" value="<%= data.address %>" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name="phone" value="<%= data.phone %>" class= "form-control">
+                        </div>
+                        <button type="submit" class="mt-2  btn btn-success">modificar ficha</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../views/partials/footer') -%>
